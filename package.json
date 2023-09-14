@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+        "autoprefixer": "^10.4.15",
+        "postcss": "^8.4.28",
+        "tailwindcss": "^3.3.3"
+    },
+    "scripts": {
+        "css:build": "yarn tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/output.css"
+    }
+}

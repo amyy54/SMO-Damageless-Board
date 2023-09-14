@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Sofia Sans';
+    src: url('~/fonts/sofiasans-variablefont_wght-webfont.woff2') format('woff2'),
+         url('~/fonts/sofiasans-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Sofia Sans';
+    max-width: min(98%, 48em);
+    font-feature-settings: "tnum";
+}
+
+table {
+    width: min(100%, 48em);
+}

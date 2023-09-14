@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>SMO_Damageless_Board</RootNamespace>
+    </PropertyGroup>
+
+    <Target Name="Tailwind" BeforeTargets="Build">
+        <Exec Command="yarn css:build" />
+    </Target>
+
+</Project>

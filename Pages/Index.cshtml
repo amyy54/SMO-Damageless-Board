@@ -1,0 +1,72 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section scripts {
+    <script>
+        const DATE_MED = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        };
+
+        document.querySelectorAll("#date").forEach((element) => {
+            let date = new Date(element.innerText);
+            element.innerText = date.toLocaleDateString("en-US", DATE_MED);
+        });
+    </script>
+}
+
+<div>
+    <p class="text-4xl pt-5 text-center">Damageless</p>
+    <p class="text-xl text-center">Leaderboard</p>
+    <p class="pt-3 text-lg text-center pb-5">This is a damageless leaderboard for Super Mario Odyssey mirroring the one
+        on <a target="_blank" rel="noreferrer noopener" class="font-bold text-link hover:underline"
+            href="https://www.speedrun.com/smoce#Damageless">Speedrun.com</a></p>
+    @if (Model.Data.Count() == 0)
+    {
+        <p class="text-center">The leaderboard could not be loaded! This might be an issue with SRC, or possibly with the
+            website's code. If this is a continuing problem, please contact the admin.</p>
+    }
+    else
+    {
+        <table class="border-collapse table-auto">
+            <thead>
+                <tr class="bg-header">
+                    <td class="pl-1">Place</td>
+                    <td>Player</td>
+                    <td class="text-center">Moon Count</td>
+                    <td class="hidden sm:table-cell">Time</td>
+                    <td>Version</td>
+                    <td class="text-right pr-1">Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Speedrun.Types.ViewableData run in Model.Data)
+                {
+                    <tr>
+                        <td class="pl-1">@run.Place</td>
+                        <td><a target="_blank" rel="noreferrer noopener"
+                                class="font-bold transition-colors duration-100 ease-in-out hover:text-link"
+                                href="@run.PlayerWebLink">@run.Player</a></td>
+                        <td class="text-center"><a target="_blank" rel="noreferrer noopener"
+                                class="font-bold transition-colors duration-100 ease-in-out hover:text-link"
+                                href="@run.Weblink">@run.MoonCount.ToString("D3")</a></td>
+                        @if (run.Time != null)
+                        {
+                            <td class="hidden sm:table-cell">@run.Time</td>
+                        }
+                        else
+                        {
+                            <td class="hidden sm:table-cell">-</td>
+                        }
+                        <td>@run.Version</td>
+                        <td id="date" class="text-right pr-1">@run.Date</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
