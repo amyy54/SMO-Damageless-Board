@@ -11,6 +11,11 @@ namespace SMO_Damageless_Board
 
             var app = builder.Build();
 
+            if (app.Environment.IsProduction())
+            {
+                app.UsePathBase(app.Configuration["BasePath"]);
+            }
+
             app.UseStaticFiles();
 
             app.UseRouting();
