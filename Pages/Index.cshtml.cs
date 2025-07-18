@@ -34,11 +34,13 @@ public class IndexModel : PageModel
                 // https://www.speedrun.com/api/v1/games/m1mxxw46/variables
                 string version = runs.run.values.onv6y608 switch
                 {
+                    "q65kk2nl" => "1.4.1",
+                    "1dk7v84l" => "1.4.0",
                     "jq6xp6oq" => "1.3.0",
                     "z194ykjl" => "1.2.0",
                     "klrz49w1" => "1.1.0",
                     "814xgjwq" => "1.0.0",
-                    _ => "1.3.0" // Assume the latest version if the version is not known.
+                    _ => "1.4.1" // Assume the latest version if the version is not known.
                 };
                 string? playerId = runs.run.players[0].rel == "user" ? runs.run.players[0].id : null;
                 string playerName = "Unknown";
